@@ -13,24 +13,44 @@ struct AddToDoView: View {
     @Binding var showSheet: Bool
     @Binding var pressedSave: Bool
     var body: some View {
-        NavigationView{
-            Form{
-                TextField("Title...", text: $newToDo.title)
-                TextField("Type something...", text: $newToDo.info)
-                DatePicker("Modified Date: ", selection: $newToDo.modifiedDate)
-            }
-            .navigationTitle("Add a note")
-            .toolbar(content: {
-                Button(action: {
-                    //save the note if there is no title
-                    pressedSave = true
-                    showSheet.toggle()
-                }, label: {
-                    Text("Save")
-                        .foregroundColor(Color.blue)
+        ZStack {
+            Color.red
+                .edgesIgnoringSafeArea(.all)
+            NavigationView{
+                VStack {
+                    Form{
+                        Section{
+                            TextField("Title...", text: $newToDo.title)
+                                .font(.title)
+                        }
+                        Section{
+                            DatePicker("Modified Date: ", selection: $newToDo.modifiedDate)
+                        }
+                        TextField("Type something...", text: $newToDo.info)
+                            .frame(width: .infinity, height:100)
+                            
+                        
+                    }
+                    .navigationTitle("Add a note")
+                    .toolbar(content: {
+                        Button(action: {
+                            //save the note if there is no title
+                            pressedSave = true
+                            showSheet.toggle()
+                        }, label: {
+                            Text("Save")
+                                .foregroundColor(Color.blue)
+                        })
                 })
-            })
+                }
+                .background(Color.red)
+            }
+            .background(Color.red)
         }
+        
+        
+        
+        
     }
 }
 

@@ -51,7 +51,9 @@ class ToDoAppViewModel: ObservableObject {
     @Published var lowTasks : [ToDoViewModel] = []
     @Published var mediumTasks : [ToDoViewModel] = []
     @Published var highTasks : [ToDoViewModel] = []
-    
+    func save(){
+        CoreDataManager.shared.save()
+    }
     func saveTodo(td: NewToDo){
         let newToDo = ToDoItem(context: CoreDataManager.shared.viewContext)
         newToDo.title = td.title

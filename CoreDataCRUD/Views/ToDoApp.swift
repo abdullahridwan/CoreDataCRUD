@@ -15,6 +15,24 @@ struct ToDoApp: View {
     @State var level = Priority.all
     @State private var editMode = EditMode.inactive
     
+    
+    //crud applications
+    func save(){}
+    func read(){}
+    func update(){}
+    private func deleteTodo (at offsets: IndexSet) {
+        offsets.forEach { index in
+            let task = todoList.allTasks[index]
+            todoList.deleteTodo(todo: task)
+        }
+        todoList.getAllToDos()
+    }
+    
+    private func moveTodo(source: IndexSet, destination: Int) {
+        todoList.allTasks.move(fromOffsets: source, toOffset: destination)
+        todoList.save()
+    }
+    
     var body: some View {
         NavigationView{
             ZStack{
@@ -23,6 +41,7 @@ struct ToDoApp: View {
               
                 VStack{
                     LevelPicker(level: level)
+                        .padding()
                     NavigationView{
                         List{
                             ForEach(todoList.allTasks, id: \.id){ aTask in
@@ -37,6 +56,8 @@ struct ToDoApp: View {
                                         }
                                     }
                             }
+                            .onDelete(perform: deleteTodo)
+                            //.onMove(perform: moveTodo)
                         }
                         .onAppear(perform: {
                             todoList.getAllToDos()
