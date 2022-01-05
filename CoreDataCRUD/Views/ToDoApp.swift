@@ -45,16 +45,22 @@ struct ToDoApp: View {
                     NavigationView{
                         List{
                             ForEach(todoList.allTasks, id: \.id){ aTask in
+                                NavigationLink(destination: {
+                                    SeeToDo(newToDo: NewToDo(title: aTask.title, info: aTask.info, createdDate: aTask.createdDate, modifiedDate: aTask.modifiedDate))
+                                }, label: {
                                     HStack{
-                                        Image(systemName: "pencil.circle")
-                                        VStack(alignment: .leading){
-                                            Text(aTask.title)
-                                                .font(.headline)
-                                                .fontWeight(.semibold)
-                                            Text(aTask.info)
-                                                .font(.subheadline)
+                                            Image(systemName: "pencil.circle")
+                                            VStack(alignment: .leading){
+                                                Text(aTask.title)
+                                                    .font(.headline)
+                                                    .fontWeight(.semibold)
+                                                Text(aTask.info)
+                                                    .font(.subheadline)
+                                            }
                                         }
-                                    }
+                                })
+                                
+                                
                             }
                             .onDelete(perform: deleteTodo)
                             //.onMove(perform: moveTodo)

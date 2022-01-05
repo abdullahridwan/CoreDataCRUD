@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B5652C4F2783CC120058BCFA /* AddToDoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5652C4E2783CC120058BCFA /* AddToDoView.swift */; };
+		B5652C52278519E10058BCFA /* SeeToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5652C51278519E10058BCFA /* SeeToDo.swift */; };
 		B5704C7A2782689700CD0980 /* CoreDataCRUDApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5704C792782689700CD0980 /* CoreDataCRUDApp.swift */; };
 		B5704C7C2782689700CD0980 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5704C7B2782689700CD0980 /* ContentView.swift */; };
 		B5704C7E2782689900CD0980 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5704C7D2782689900CD0980 /* Assets.xcassets */; };
@@ -40,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		B5652C4E2783CC120058BCFA /* AddToDoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToDoView.swift; sourceTree = "<group>"; };
+		B5652C51278519E10058BCFA /* SeeToDo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeToDo.swift; sourceTree = "<group>"; };
 		B5704C762782689700CD0980 /* CoreDataCRUD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreDataCRUD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5704C792782689700CD0980 /* CoreDataCRUDApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataCRUDApp.swift; sourceTree = "<group>"; };
 		B5704C7B2782689700CD0980 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -105,10 +107,10 @@
 			isa = PBXGroup;
 			children = (
 				B5704CA927826A2000CD0980 /* ToDoAppModel.xcdatamodeld */,
-				B5704CA4278268B400CD0980 /* ViewModels */,
-				B5704CA3278268A700CD0980 /* Views */,
 				B5704C792782689700CD0980 /* CoreDataCRUDApp.swift */,
 				B5704C7B2782689700CD0980 /* ContentView.swift */,
+				B5704CA4278268B400CD0980 /* ViewModels */,
+				B5704CA3278268A700CD0980 /* Views */,
 				B5704C7D2782689900CD0980 /* Assets.xcassets */,
 				B5704C7F2782689900CD0980 /* Preview Content */,
 				B5704CAC27826BE200CD0980 /* CoreDataManager.swift */,
@@ -146,6 +148,7 @@
 			children = (
 				B5704CA5278268C300CD0980 /* ToDoApp.swift */,
 				B5652C4E2783CC120058BCFA /* AddToDoView.swift */,
+				B5652C51278519E10058BCFA /* SeeToDo.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				B5704CAD27826BE200CD0980 /* CoreDataManager.swift in Sources */,
 				B5704CA82782694400CD0980 /* ToDoAppViewModel.swift in Sources */,
 				B5704CAB27826A2100CD0980 /* ToDoAppModel.xcdatamodeld in Sources */,
+				B5652C52278519E10058BCFA /* SeeToDo.swift in Sources */,
 				B5704CA6278268C300CD0980 /* ToDoApp.swift in Sources */,
 				B5652C4F2783CC120058BCFA /* AddToDoView.swift in Sources */,
 				B5704C7C2782689700CD0980 /* ContentView.swift in Sources */,
