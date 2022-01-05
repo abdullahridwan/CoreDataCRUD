@@ -45,6 +45,7 @@ struct ToDoApp: View {
                     NavigationView{
                         List{
                             ForEach(todoList.allTasks, id: \.id){ aTask in
+                                //need to add todoList info
                                 NavigationLink(destination: {
                                     SeeToDo(newToDo: NewToDo(title: aTask.title, info: aTask.info, createdDate: aTask.createdDate, modifiedDate: aTask.modifiedDate))
                                 }, label: {
