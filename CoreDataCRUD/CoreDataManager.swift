@@ -54,6 +54,7 @@ class CoreDataManager{
     func updateToDo(t: ToDoItem){
         //update the ToDoItem based on its nsmanagedobjectid
         //save view context
+        save()
     }
     func deleteToDo(t: ToDoItem){
         viewContext.delete(t)

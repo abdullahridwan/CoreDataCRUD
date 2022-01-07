@@ -27,7 +27,7 @@ struct AddToDoView: View {
                             DatePicker("Modified Date: ", selection: $newToDo.modifiedDate)
                         }
                         TextField("Type something...", text: $newToDo.info)
-                            .frame(width: .infinity, height:100)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
                             
                         
                     }

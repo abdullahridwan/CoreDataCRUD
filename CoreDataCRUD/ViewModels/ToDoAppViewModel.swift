@@ -15,28 +15,38 @@ enum Priority: String, CaseIterable {
     case high
 }
 
+//struct ToDoViewModel {
+//    //Base info from database
+//    var todo: ToDoItem
+//    var id: NSManagedObjectID {
+//        return todo.objectID
+//    }
+//
+//    var title: String {
+//        return todo.title ?? "No title"
+//    }
+//
+//    var info : String {
+//        return todo.info ?? "No Info"
+//    }
+//
+//    var createdDate: Date {
+//        return todo.createdDate ?? Date()
+//    }
+//
+//    var modifiedDate: Date {
+//        return todo.modifiedDate ?? Date()
+//    }
+//}
+
 struct ToDoViewModel {
     //Base info from database
     var todo: ToDoItem
-    var id: NSManagedObjectID {
-        return todo.objectID
-    }
-    
-    var title: String {
-        return todo.title ?? "No title"
-    }
-    
-    var info : String {
-        return todo.info ?? "No Info"
-    }
-    
-    var createdDate: Date {
-        return todo.createdDate ?? Date()
-    }
-    
-    var modifiedDate: Date {
-        return todo.modifiedDate ?? Date()
-    }
+    var id: NSManagedObjectID
+    var title: String
+    var info : String
+    var createdDate: Date
+    var modifiedDate: Date
 }
 
 struct NewToDo {
@@ -63,10 +73,25 @@ class ToDoAppViewModel: ObservableObject {
         CoreDataManager.shared.save()
     }
     func getAllToDos(){
-        allTasks = CoreDataManager.shared.getAllToDo().map(ToDoViewModel.init)
+        allTasks = CoreDataManager.shared.getAllToDo().map{ (ToDoItem) -> ToDoViewModel in
+            return ToDoViewModel(todo: ToDoItem, id: ToDoItem.objectID, title: ToDoItem.title ?? "No Title", info: ToDoItem.info ?? "No Info", createdDate: ToDoItem.createdDate ?? Date(), modifiedDate: ToDoItem.modifiedDate ?? Date())
+            
+        }
     }
     func updateTodo(tdvm: ToDoViewModel){
-        //given the id of the todo, update the values.
+        //get the todo
+        let existingToDo = CoreDataManager.shared.getToDoByID(tid: tdvm.id)
+        print("todo exists\n")
+        if let existingToDo = existingToDo{
+            print("title before: \(existingToDo.title ?? "No title")")
+            existingToDo.title = tdvm.title
+            print("title after: \(existingToDo.title ?? "No title")")
+            existingToDo.info = tdvm.info
+            existingToDo.modifiedDate = tdvm.modifiedDate
+            CoreDataManager.shared.updateToDo(t: existingToDo)
+        }
+        //set the values in the view model to the actual todo
+        //and then save
     }
     func deleteTodo(todo: ToDoViewModel){
         //get the todo by the id

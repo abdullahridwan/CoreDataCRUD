@@ -107,13 +107,13 @@
 			isa = PBXGroup;
 			children = (
 				B5704CA927826A2000CD0980 /* ToDoAppModel.xcdatamodeld */,
+				B5704CAC27826BE200CD0980 /* CoreDataManager.swift */,
 				B5704C792782689700CD0980 /* CoreDataCRUDApp.swift */,
 				B5704C7B2782689700CD0980 /* ContentView.swift */,
 				B5704CA4278268B400CD0980 /* ViewModels */,
 				B5704CA3278268A700CD0980 /* Views */,
 				B5704C7D2782689900CD0980 /* Assets.xcassets */,
 				B5704C7F2782689900CD0980 /* Preview Content */,
-				B5704CAC27826BE200CD0980 /* CoreDataManager.swift */,
 			);
 			path = CoreDataCRUD;
 			sourceTree = "<group>";

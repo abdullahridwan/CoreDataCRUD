@@ -42,12 +42,11 @@ struct ToDoApp: View {
                 VStack{
                     LevelPicker(level: level)
                         .padding()
-                    NavigationView{
                         List{
                             ForEach(todoList.allTasks, id: \.id){ aTask in
                                 //need to add todoList info
                                 NavigationLink(destination: {
-                                    SeeToDo(newToDo: NewToDo(title: aTask.title, info: aTask.info, createdDate: aTask.createdDate, modifiedDate: aTask.modifiedDate))
+                                    SeeToDo(todoVM: aTask)
                                 }, label: {
                                     HStack{
                                             Image(systemName: "pencil.circle")
@@ -60,6 +59,8 @@ struct ToDoApp: View {
                                             }
                                         }
                                 })
+                                    .navigationBarBackButtonHidden(true)
+                                
                                 
                                 
                             }
@@ -86,11 +87,12 @@ struct ToDoApp: View {
                         .sheet(isPresented: $showSheet, content: {
                             AddToDoView(newToDo: $newToDoItem, showSheet: $showSheet, pressedSave: $pressedSave)
                         })
-                    }
+                    
                 }
             }
             .navigationBarTitle("To Dos")
         }
+        .environmentObject(todoList)
     }
     
     
