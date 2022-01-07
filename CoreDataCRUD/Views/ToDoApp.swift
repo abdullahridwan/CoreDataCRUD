@@ -16,7 +16,7 @@ struct ToDoApp: View {
     @State private var editMode = EditMode.inactive
     
     
-    //crud applications
+    //crud application
     func save(){}
     func read(){}
     func update(){}
