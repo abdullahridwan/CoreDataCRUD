@@ -43,21 +43,12 @@ struct ToDoApp: View {
                     LevelPicker(level: level)
                         .padding()
                         List{
-                            ForEach(todoList.allTasks, id: \.id){ aTask in
+                            ForEach($todoList.allTasks, id: \.id){ aTask in
                                 //need to add todoList info
                                 NavigationLink(destination: {
                                     SeeToDo(todoVM: aTask)
                                 }, label: {
-                                    HStack{
-                                            Image(systemName: "pencil.circle")
-                                            VStack(alignment: .leading){
-                                                Text(aTask.title)
-                                                    .font(.headline)
-                                                    .fontWeight(.semibold)
-                                                Text(aTask.info)
-                                                    .font(.subheadline)
-                                            }
-                                        }
+                                    NoteCard(aTask: aTask)
                                 })
                                     .navigationBarBackButtonHidden(true)
                                 
@@ -138,5 +129,21 @@ struct LevelPicker: View {
         }
         .pickerStyle(SegmentedPickerStyle())
         .labelsHidden()
+    }
+}
+
+struct NoteCard: View {
+    @Binding var aTask: ToDoViewModel
+    var body: some View {
+        HStack{
+            Image(systemName: "pencil.circle")
+            VStack(alignment: .leading){
+                Text(aTask.title)
+                    .font(.headline)
+                    .fontWeight(.semibold)
+                Text(aTask.info)
+                    .font(.subheadline)
+            }
+        }
     }
 }
